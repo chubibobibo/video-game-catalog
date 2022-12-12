@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Games</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+</head>
+
+<!-- our found items in the model = allItems -->
+
+<body>
+    <div>
+        <h1 class="appTitle">VIDEO GAME CATALOG</h1>
+    </div>
+    <div class="container cardContainer">
+        <div class="row">
+            <div class="card" style="width: auto;">
+                <img src="https://images.unsplash.com/photo-1539716947714-3295e1074d33?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjZ8fHZpZGVvJTIwZ2FtZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <ul>
+                        <!-- iterate over the found items, then use it to list all games by name and use it to link to their
+                        detail page(/detailGames) -->
+                        <!-- if a query string is requested, then allItems will be just the items that have the same query string value(genre=rpg) -->
+                        <%for(allGames of allItems){%>
+                            <li>
+                                <%=allGames.name%>
+                            </li>
+                            <a href="/detailGames/<%=allGames.id%>" class="btn btn-secondary">Details</a>
+                            <a href="/editGame/<%=allGames.id%>" class="btn btn-secondary">Edit Details</a>
+                            <%}%>
+                    </ul><br>
+                    <a href="/index" class="btn btn-secondary">Add new games</a>
+                    <% if(genre !=="all" ){%>
+                        <a href="/allGames" class="btn btn-secondary">Show all games</a>
+                        <%}%>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

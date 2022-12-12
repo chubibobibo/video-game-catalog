@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Games</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div>
+        <h1 class="appTitle">VIDEO GAME CATALOG</h1>
+    </div>
+
+    <div class="container cardContainer">
+        <div class="row">
+            <div class="card" style="width: auto;">
+                <img src="https://images.unsplash.com/photo-1539716947714-3295e1074d33?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjZ8fHZpZGVvJTIwZ2FtZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <!-- use the id found in the index.ejsto be able to edit the sopecific item -->
+                    <!-- change method to PUT thanks to method-override -->
+                    <form method='POST' action="/detailGames/<%=foundGame._id%>?_method=PUT" class="form-control">
+                        <div class="inputBlock">
+                            <label for="name">Edit Title:</label>
+                            <input type="name" name="name" id="name" value="<%=foundGame.name%>" placeholder=" Enter Game
+                                Title" class="form-control">
+                        </div>
+                        <div class="inputBlock">
+                            <label for="genre">Edit Genre:</label>
+                            <select name="genre" id="genre" value="<%=foundGame.genre%>" class="form-control">
+                                <option value="rpg">RPG</option>
+                                <option value="puzzle">Puzzle</option>
+                                <option value="action">Action</option>
+                            </select>
+                        </div>
+                        <div class="inputBlock">
+                            <label for="description">Edit Description</label>
+                            <textarea name="description" value="<%=foundGame.description%>" id="description" cols="50"
+                                rows="5" class="form-control" placeholder="Enter Description"></textarea>
+                        </div>
+                        <div class="inputBlock">
+                            <label for="price">Edit Price</label>
+                            <input type="number" name="price" value="<%=foundGame.price%>" id="price"
+                                placeholder="Enter Price" class="form-control">
+                        </div>
+                        <button class="btn btn-secondary">Save</button>
+                    </form>
+                    <br>
+                    <a href="/allGames" class="btn btn-secondary">Show all games</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

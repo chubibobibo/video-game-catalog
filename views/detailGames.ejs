@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Games</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+</head>
+
+<!-- our found items in the model = foundGame -->
+
+<body>
+    <div>
+        <h1 class="appTitle">VIDEO GAME CATALOG</h1>
+    </div>
+    <div class="container cardContainer">
+        <div class="row">
+            <div class="card" style="width: auto;">
+                <img src="https://images.unsplash.com/photo-1539716947714-3295e1074d33?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjZ8fHZpZGVvJTIwZ2FtZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <!-- display all the details of a specific game from the foundGame in the index.js -->
+                    <h1 class="titleFoundGame">
+                        <%=foundGame.name%>
+                    </h1>
+                    <h2 style="color: blue;" class="mb-0">GENRE:</h2>
+                    <h2>
+                        <!-- create a link for the genre to direct to /allGames that will return a query which we will use to query the modelDB to filter for same values of genre -->
+                        <a href="/allGames?genre=<%=foundGame.genre%>">
+                            <%=foundGame.genre%>
+                        </a>
+                    </h2>
+                    <h2 style="color: blue" class="mb-0">DESCRIPTION:</h2>
+                    <h2>
+                        <%=foundGame.description%>
+                    </h2>
+                    <h2 style="color: blue" class="mb-0">PRICE:</h2>
+                    <h2>
+                        $<%=foundGame.price%>
+                    </h2>
+                    <div class="row rowButtons">
+                        <div class="col-md-3">
+                            <a href="/index" class="btn btn-secondary">Add new games</a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="/allGames" class="btn btn-secondary">Show all games</a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="/editGame/<%=foundGame._id%>" class="btn btn-secondary">Edit Details</a>
+                        </div>
+                        <div class="col-md-3">
+                            <!-- problem: was not deleting the specific item (cannot delete):soln: mispelled the route -->
+                            <!-- we used the link in action because that is where we want to submit the delete request(a specific item in the DB) -->
+                            <form method="POST" action="/detailGames/<%=foundGame._id%>?_method=DELETE">
+                                <button class="btn btn-secondary">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
